@@ -36,7 +36,7 @@ html, body {
 
 #buyList {
     width: 100%;
-    height: calc(100% - 132px);
+    height: calc(100% - 130px);
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -69,6 +69,7 @@ html, body {
 .itemBuyed {
     background-color: #222;
     color: gray;
+    cursor: not-allowed;
 }
 
 .itemBuyed img {
