@@ -59,22 +59,46 @@ function buyed (el) {
 }
 
 function champChange () {
-    var champ = document.querySelector("#champSelect").value;
+    var champ = document.querySelector("#champSelect").innerHTML;
     generateList(champ);
 }
 
 // internal 
 function generateChampSelect () {
-    var select = document.querySelector("#champSelect");
+    var select = document.querySelector("#selectList");
     for (var champ in lists) {
         Creator.new({
-            tag: "option",
+            tag: "div",
             attributes: {
-                value: champ,
-                innerHTML: champ
+                innerHTML: champ,
+                className: "selectItem"
+            },
+            events: {
+                click: function (ev) {
+                    setSelectItem(ev.target);
+                }
             }
         }).appendTo(select);
     }
+}
+
+function showSelectList () {
+    var select = document.querySelector("#selectList");
+    if (select.classList.contains("notShown")) {
+        select.classList.remove("notShown");
+    } else {
+        select.classList.add("notShown");
+    }
+}
+
+function setSelectItem (t) {
+    var btn = document.querySelector("#champSelect");
+    var select = document.querySelector("#selectList");
+    if (!select.classList.contains("notShown")) {    
+        select.classList.add("notShown");
+    }
+    btn.innerHTML = t.innerHTML;
+    champChange();
 }
 
 // initialize function
