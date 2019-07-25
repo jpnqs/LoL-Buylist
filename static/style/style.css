@@ -36,7 +36,7 @@ html, body {
 
 #buyList {
     width: 100%;
-    height: calc(100% - 130px);
+    height: calc(100% - 125px);
     overflow-y: auto;
     overflow-x: hidden;
 }

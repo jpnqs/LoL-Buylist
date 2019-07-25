@@ -4,30 +4,48 @@ function generateList (champ) {
     list.innerHTML = "";
 
     for (var i in lists[champ]) {
-        var item = document.createElement("div");
-        var span = document.createElement("span");
-        span.innerHTML = i;
-        span.className = "itemName";
-        item.appendChild(span);
-        span = document.createElement("span");
-        span.innerHTML = lists[champ][i]["price"];
-        span.className = "itemCosts";
-        item.appendChild(span);
-        item.className = "item";
-        item.addEventListener("click", function (ev) {
-            if (ev.target.nodeName == "DIV") {
-                buyed(ev.target);
-            } else {
-                buyed(ev.target.parentNode);
+        // create item div
+        var item = Creator.new({
+            tag: "div",
+            attributes: {
+                className: "item"
+            },
+            events: {
+                click: function (ev) {
+                    if (ev.target.nodeName == "DIV") {
+                        buyed(ev.target);
+                    } else {
+                        buyed(ev.target.parentNode);
+                    }
+                }
             }
-        });
-        var img = new Image();
-        img.src = lists[champ][i]["img"];
-        img.width = 50;
-        img.height = 50;
-        img.className = "propImage";
-        item.appendChild(img);
-        list.appendChild(item);
+        }).appendTo(list);
+        // create item name span
+        Creator.new({
+            tag: "span",
+            attributes: {
+                innerHTML: i,
+                className: "itemName",
+            }
+        }).appendTo(item);
+        // create item price
+        Creator.new({
+            tag: "span",
+            attributes: {
+                innerHTML: lists[champ][i]["price"],
+                className: "itemCosts"
+            }
+        }).appendTo(item);
+        // create item image
+        Creator.new({
+            tag: "img",
+            attributes: {
+                src: lists[champ][i]["img"],
+                width: 50,
+                height: 50,
+                className: "propImage"
+            }
+        }).appendTo(item);
     }
 
 }
@@ -49,10 +67,13 @@ function champChange () {
 function generateChampSelect () {
     var select = document.querySelector("#champSelect");
     for (var champ in lists) {
-        var option = document.createElement("option");
-        option.value = champ;
-        option.innerHTML = champ;
-        select.appendChild(option);
+        Creator.new({
+            tag: "option",
+            attributes: {
+                value: champ,
+                innerHTML: champ
+            }
+        }).appendTo(select);
     }
 }
 
