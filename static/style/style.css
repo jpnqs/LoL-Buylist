@@ -114,21 +114,26 @@ html, body {
     height: calc(100% - 125px);
     width: 100%;
     background-color: #333;
-    /* transition: 0.3s; */
     overflow-x: hidden;
     overflow-y: auto;
+    border-bottom-color: #222;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    transition: 0.3s;
 }
 
 .notShown {
     height: 0px;
     overflow:hidden;
+    border-bottom: none;
 }
 
 .selectItem {
+    font-size: 14pt;
     width: 100%;
     color: white;
     padding: 1rem;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .selectItem:hover {
@@ -137,4 +142,24 @@ html, body {
 
 .selectItem:active {
     background-color: #888
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #333; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

@@ -8,7 +8,7 @@ var lists = {
             "price": "50",
             "img": "https://www.mobafire.com/images/item/health-potion.gif"
         },
-        "Dorans Blade": {
+        "Doran's Blade": {
             "price": "450",
             "img": "https://www.mobafire.com/images/item/dorans-blade.gif"
         },
